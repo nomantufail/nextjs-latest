@@ -5,6 +5,7 @@ import { Breadcrumb } from '@/components/bread-crumb/bread-crumb';
 import { toTitleCase } from '@/utils';
 import { fetchProduct } from '@/server/fetches';
 
+type Params = Promise<{ id: string; category: string }>
 const isProductCategory = (
   maybeProductCategory: string
 ): maybeProductCategory is ProductCategory =>
@@ -13,7 +14,7 @@ const isProductCategory = (
 // REF: https://nextjs.org/docs/app/api-reference/file-conventions/page
 export default async function ProductPageLayout(
   props: Readonly<{
-    params: { id: string; category: string };
+    params: Params;
     children: React.ReactNode;
   }>
 ) {
